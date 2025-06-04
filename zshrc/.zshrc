@@ -39,6 +39,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias install="brew install"
 alias uninstall="brew uninstall"
 alias mp3='cd /Users/paul/Documents/GitHub/ClipCatch && source venv/bin/activate && python main.py'
+alias fzfmove="~/Documents/GitHub/fzf-move/fzfmove.sh"
 
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh

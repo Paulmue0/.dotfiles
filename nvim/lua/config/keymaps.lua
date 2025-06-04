@@ -3,3 +3,8 @@
 -- Add any additional keymaps here
 -- Open command-line prompt with `-` in normal mode
 vim.keymap.set("n", "-", ":", { noremap = true })
+
+-- Open Neogit
+vim.keymap.set("n", "<leader>gg", function()
+  require("neogit").open()
+end, { desc = "Open Neogit" })
