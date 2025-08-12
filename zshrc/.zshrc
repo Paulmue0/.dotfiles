@@ -124,7 +124,7 @@ eval "$(zoxide init zsh)"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
+export PATH="$HOME/go/bin:$PATH"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -180,3 +180,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+. "$HOME/.local/bin/env"
