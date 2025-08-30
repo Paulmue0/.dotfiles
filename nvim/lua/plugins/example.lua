@@ -135,6 +135,9 @@ return {
         "vim",
         "yaml",
       },
+      ignore_install = {
+        "org",
+      },
     },
   },
 
