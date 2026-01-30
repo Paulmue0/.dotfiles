@@ -20,6 +20,7 @@ alias ll="ls -la -G"
 alias zshconfig="nvim ~/.zshrc"
 alias fzfmove="~/Documents/GitHub/fzf-move/fzfmove.sh"
 alias stop="~/Documents/GitHub/stop/stop.sh"
+alias slide-diff="python3 ~/Documents/GitHub/slide-diff/slide_cleaner.py"
 
 # Git
 alias gundo="git reset --soft HEAD~"
@@ -58,6 +59,7 @@ source $ZSH/oh-my-zsh.sh
 # PATH Configuration
 # ============================================================================
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/dev/flutter/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/Users/paul/Library/pnpm"
