@@ -28,6 +28,7 @@ else
       find $HOME/Documents/GitHub/* -maxdepth 0 -type d
       find $HOME/Documents/GitLab/* -maxdepth 0 -type d
       find $HOME/Documents/notes/* -maxdepth 0 -type d
+      find $HOME/Nextcloud/Uni/* Dokumente/Konstanz\ Unizeugs/* -maxdepth 2 -type d
       echo "$HOME/.dotfiles"
     } | fzf --border --print-query
   )
@@ -43,13 +44,13 @@ if [[ ! -d $selected ]]; then
   if [[ $selected == https://github.com/* || $selected == git@github.com:* ]]; then
     # It's a GitHub URL, extract the repo name from the URL
     repo_name=$(basename "$selected" .git)
-    echo "Cloning GitHub repo '$repo_name' to '${GH_DIR}/$repo_name'."
+    echo "Cloning GitHub repo '$repo_name' to '$HOME/Documents/GitHub/$repo_name'."
     read -p "Enter new directory name or press enter to use '$repo_name': " custom_name
 
     if [[ -n $custom_name ]]; then
-      target_dir="${GH_DIR}/$custom_name"
+      target_dir="$HOME/Documents/GitHub/$custom_name"
     else
-      target_dir="${GH_DIR}/$repo_name"
+      target_dir="$HOME/Documents/GitHub/$repo_name"
     fi
 
     git clone "$selected" "$target_dir"
@@ -62,11 +63,11 @@ if [[ ! -d $selected ]]; then
     fi
   else
     # It's a directory path, offer to create it
-    read -p "Directory '${GH_DIR}/$selected' doesn't exist. Create it? (y/n) " -n 1 -r
+    read -p "Directory '$HOME/Documents/GitHub/$selected' doesn't exist. Create it? (y/n) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-      mkdir -p "${GH_DIR}/$selected"
-      selected="${GH_DIR}/$selected"
+      mkdir -p "$HOME/Documents/GitHub/$selected"
+      selected="$HOME/Documents/GitHub/$selected"
     else
       exit 0
     fi
