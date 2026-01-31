@@ -21,6 +21,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias fzfmove="~/Documents/GitHub/fzf-move/fzfmove.sh"
 alias stop="~/Documents/GitHub/stop/stop.sh"
 alias slide-diff="python3 ~/Documents/GitHub/slide-diff/slide_cleaner.py"
+alias y="yazi"
 
 # Git
 alias gundo="git reset --soft HEAD~"
