@@ -50,6 +50,7 @@ source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
+export EDITOR='nvim'
 
 # ============================================================================
 # Oh My Zsh Initialization

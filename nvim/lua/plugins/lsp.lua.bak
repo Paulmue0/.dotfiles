@@ -1,0 +1,95 @@
+return {
+  -- Mason: LSP installer
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+
+  -- Mason bridge to LSPConfig
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {},        -- leave empty for auto-install
+        automatic_installation = true -- auto-install servers you open
+      })
+    end,
+  },
+
+  -- nvim-lspconfig + server setup
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = { "williamboman/mason-lspconfig.nvim" },
+    config = function()
+      local lspconfig = require("lspconfig")
+
+      -- List of servers with optional config
+      local servers = {
+        lua_ls = { settings = { Lua = { diagnostics = { globals = { "vim" } } } } },
+        pyright = {},
+        tsserver = {},
+        bashls = {},
+        html = {},
+        jsonls = {},
+        rust_analyzer = {}, -- optional, works with rust-tools
+      }
+
+      -- Setup all servers
+      for name, opts in pairs(servers) do
+        lspconfig[name].setup(opts)
+      end
+
+      -- Inline diagnostics (virtual text)
+      vim.diagnostic.config({
+        virtual_text = { prefix = "●", spacing = 2, severity = { min = vim.diagnostic.severity.WARN } },
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+      })
+    end,
+  },
+
+  -- Optional: nvim-cmp for autocompletion
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "L3MON4D3/LuaSnip", -- snippet engine
+      "saadparwaiz1/cmp_luasnip",
+    },
+    config = function()
+      local cmp = require("cmp")
+      local luasnip = require("luasnip")
+
+      cmp.setup({
+        snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+        }, {
+          { name = "buffer" },
+        }),
+      })
+
+      -- LSP capabilities for nvim-cmp
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- You can attach capabilities to your LSP servers like this:
+      -- lspconfig.lua_ls.setup({ capabilities = capabilities })
+    end,
+  },
+}
+
