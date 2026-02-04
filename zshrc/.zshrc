@@ -4,6 +4,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="agnoster"
 plugins=(git)
+plugins+=(zsh-syntax-highlighting)
 
 # ============================================================================
 # Aliases
@@ -46,6 +47,7 @@ fi
 # ============================================================================
 # Shell Enhancements
 # ============================================================================
+HOMEBREW_PREFIX=$(brew --prefix)
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source <(fzf --zsh)
@@ -87,4 +89,5 @@ unset __conda_setup
 # ============================================================================
 # Local Configuration
 # ============================================================================
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
