@@ -1,1 +1,1 @@
-return { "echasnovski/mini.hipatterns", version = "*" }
+return { "nvim-mini/mini.hipatterns", version = "*" }

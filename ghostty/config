@@ -20,3 +20,15 @@ keybind = super+i=inspector:toggle
 keybind = super+r=reload_config
 
 macos-icon = official
+
+# Disable some keybinds
+keybind=super+j=unbind
+keybind=super+k=unbind
+
+# cmd for nvim hjkl
+keybind = super+h=esc:h
+keybind = super+j=esc:j
+keybind = super+k=esc:k
+keybind = super+l=esc:l
+
+
