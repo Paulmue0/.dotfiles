@@ -12,6 +12,7 @@ brew "stow"             # Organize software neatly under a single directory tree
 brew "tmux"             # Terminal multiplexer
 brew "tree"             # Display directories as trees (with optional color/HTML output)
 brew "zoxide"           # Shell extension to navigate your filesystem faster
+brew "yati"             #  Shell File Manager
 
 # Shell
 brew "spaceship"                # Zsh prompt for Astronauts

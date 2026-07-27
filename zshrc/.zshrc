@@ -23,6 +23,8 @@ alias fzfmove="~/Documents/GitHub/fzf-move/fzfmove.sh"
 alias stop="~/Documents/GitHub/stop/stop.sh"
 alias slide-diff="python3 ~/Documents/GitHub/slide-diff/slide_cleaner.py"
 alias y="yazi"
+alias sioyek="/Applications/sioyek.app/Contents/MacOS/sioyek"
+
 
 # Git
 alias gundo="git reset --soft HEAD~"
@@ -91,3 +93,4 @@ unset __conda_setup
 # ============================================================================
 # . "$HOME/.local/bin/env"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

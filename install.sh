@@ -1,13 +1,13 @@
+#!/usr/bin/env bash
 # Run this script in .dotfiles/
-#
-#
-#
-#
-# install stow
-brew install stow
 
-#--- stow dotfiles
-#--------- MAKE SURE ALL TARGET PATH EXIST
+# Create target directories
+mkdir -p "$HOME/.config/nvim"
+mkdir -p "$HOME/.config/karabiner"
+mkdir -p "$HOME/.config/git"
+mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
+
+# Stow dotfiles
 stow zshrc
 stow tmux
 stow --target="$HOME/.config/nvim/" nvim
